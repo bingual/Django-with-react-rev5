@@ -1,0 +1,8 @@
+.vscode
+.idea
+.ipynb
+db.sqlite3
+__pycache__
+backend/media
+backend/static
+env.bat
