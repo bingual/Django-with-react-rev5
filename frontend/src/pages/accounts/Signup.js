@@ -10,7 +10,7 @@ export default function Signup() {
     const navigate = useNavigate();
     const [fieldErrors, setFieldErrors] = useState({});
 
-    const handleSignup = () => {
+    const handleLoginPage = () => {
         notification.open({
             message: '로그인 페이지로 이동합니다.',
             icon: <SmileOutlined style={{ color: '#108ee9' }} />,
@@ -150,7 +150,9 @@ export default function Signup() {
                     <Form.Item {...tailLayout}>
                         <p>
                             계정이 있습니까?{' '}
-                            <Button onClick={handleSignup}>로그인 하기</Button>
+                            <Button onClick={handleLoginPage}>
+                                로그인 하기
+                            </Button>
                         </p>
                     </Form.Item>
                 </Form>

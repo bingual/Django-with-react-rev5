@@ -23,6 +23,14 @@ export default function Login() {
         from: { pathname: '/' },
     };
 
+    const handleSignupPage = () => {
+        notification.open({
+            message: '회원가입 페이지로 이동합니다.',
+            icon: <SmileOutlined style={{ color: '#108ee9' }} />,
+        });
+        navigate('/accounts/signup');
+    };
+
     const onFinish = (values) => {
         async function fn() {
             // values의 담긴 오브젝트 추출후 변수화
@@ -85,7 +93,6 @@ export default function Login() {
                             {
                                 required: true,
                             },
-                            { min: 5, message: '5글자 입력해주세요.' },
                         ]}
                         hasFeedback // 입력 컨트롤의 피드 아이콘 표시
                         {...fieldErrors.username}
@@ -108,10 +115,19 @@ export default function Login() {
                         <Input.Password />
                     </Form.Item>
 
-                    <Form.Item {...taiLayout}>
+                    <Form.Item {...tailLayout}>
                         <Button type="primary" htmlType="submit">
                             Submit
                         </Button>
+                    </Form.Item>
+
+                    <Form.Item {...tailLayout}>
+                        <p>
+                            계정이 없습니까?{' '}
+                            <Button onClick={handleSignupPage}>
+                                회원가입 하기
+                            </Button>
+                        </p>
                     </Form.Item>
                 </Form>
             </Card>
@@ -124,6 +140,6 @@ const layout = {
     wrapperCol: { span: 16 },
 };
 
-const taiLayout = {
+const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
 };
