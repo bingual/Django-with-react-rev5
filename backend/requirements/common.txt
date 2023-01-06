@@ -1,0 +1,10 @@
+django-debug-toolbar
+django-extensions
+jupyter
+pillow
+django-bootstrap-v5
+djangorestframework
+django-cors-headers
+httpie
+djangorestframework-simplejwt
+django-pydenticon
