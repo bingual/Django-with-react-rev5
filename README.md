@@ -16,7 +16,7 @@
       <li>포스팅 쓰기, 삭제, 댓글 쓰기, 삭제 API, 리액트 Component Form </li>
       <li>포스팅 좋아요 API, 리액트 Component</li>
       <li>포스팅 디테일 API, 리액트 Component</li>
-      <li>유저페이지 API, 게시글, 팔로워, 팔로우 카운트, 팔로우 Follow</li>
+      <li>유저페이지 API, 게시글, 팔로워, 팔로우 카운트, Follow 기능</li>
       <li>프로필 수정 API, 리액트 Component Form </li>
       <li>패스워드 체인지 커스텀 API</li>
       <li>포스팅 내용에 #으로 태그입력시 태그셋에 추가 활용하는 API, 리액트 Component</li>
