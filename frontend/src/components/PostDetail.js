@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppContext } from 'store';
 import { axiosInstance, useAxios } from 'api';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Card, Button, Avatar, Popconfirm } from 'antd';
 import { Link } from 'react-router-dom';
 import CommentList from './CommentList';
@@ -11,6 +11,8 @@ export default function PostDetail() {
     const {
         store: { bearerToken, username: requestUser },
     } = useAppContext();
+
+    const navigate = useNavigate();
 
     const { postId } = useParams();
 
@@ -57,7 +59,7 @@ export default function PostDetail() {
                 },
             );
             console.log(response);
-            refetch();
+            navigate('/');
         } catch (error) {
             console.error(error);
         }
