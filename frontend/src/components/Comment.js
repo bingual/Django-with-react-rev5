@@ -33,7 +33,9 @@ export default function Comment({ comment, handleDelete }) {
                         cancelText="아니오"
                         onConfirm={() => handleDelete(id)}
                     >
-                        <Button style={{ marginTop: '0.5em' }}>삭제</Button>
+                        <Button type="primary" style={{ marginTop: '0.5em' }}>
+                            댓글 삭제
+                        </Button>
                     </Popconfirm>,
                 ]
             }
