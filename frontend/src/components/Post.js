@@ -1,12 +1,11 @@
 import React from 'react';
-import { Avatar, Card, Popconfirm } from 'antd';
+import { Avatar, Card, Popconfirm, Button } from 'antd';
 import { HeartOutlined, HeartTwoTone } from '@ant-design/icons';
 import CommentList from './CommentList';
 import { axiosInstance } from 'api';
-import { Button } from 'antd/lib/radio';
 import { useAppContext } from 'store';
-import { Link } from 'react-router-dom';
-const Post = ({ post, handleLike, handleDelete, handleEdit }) => {
+import { Link, Routes, useNavigate } from 'react-router-dom';
+const Post = ({ post, handleLike, handleDelete }) => {
     const {
         store: { username: requestUser },
     } = useAppContext();
@@ -81,17 +80,6 @@ const Post = ({ post, handleLike, handleDelete, handleEdit }) => {
                     ]}
                     style={{ marginBottom: '0.5em' }}
                 />
-                <CommentList post={post} />
-
-                {/* FIXME: 미구현 */}
-                {requestUser === username && (
-                    <Button
-                        style={{ marginTop: '0.5em', marginRight: '0.5em' }}
-                        onClick={() => handleEdit(id)}
-                    >
-                        수정
-                    </Button>
-                )}
                 {requestUser === username && (
                     <Popconfirm
                         title="정말 삭제하겠습니까?"
@@ -99,9 +87,18 @@ const Post = ({ post, handleLike, handleDelete, handleEdit }) => {
                         cancelText="아니오"
                         onConfirm={() => handleDelete(id)}
                     >
-                        <Button style={{ marginTop: '0.5em' }}>삭제</Button>
+                        <Button
+                            type="primary"
+                            style={{
+                                marginTop: '0.5em',
+                                marginBottom: '0.5em',
+                            }}
+                        >
+                            포스팅 삭제
+                        </Button>
                     </Popconfirm>
                 )}
+                <CommentList post={post} />
             </Card>
         </div>
     );
