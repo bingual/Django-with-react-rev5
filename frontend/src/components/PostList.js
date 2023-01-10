@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Post from './Post';
 import { useAppContext } from 'store';
 import { axiosInstance, useAxios } from 'api';
-import { Alert, Space, Button } from 'antd';
+import { Alert } from 'antd';
 
 const PostList = () => {
     // simple_jwt토큰 인증
@@ -69,9 +69,6 @@ const PostList = () => {
         }
     };
 
-    //FIXME: 미구현
-    const handleEdit = async (postId) => {};
-
     return (
         <div>
             {postList && postList.length === 0 && (
@@ -79,13 +76,12 @@ const PostList = () => {
             )}
             {postList &&
                 postList.map((post, id) => (
-                    <div style={{marginBottom: '1.0em'}}>
+                    <div style={{ marginBottom: '1.0em' }}>
                         <Post
                             key={id}
                             post={post}
                             handleLike={handleLike}
                             handleDelete={handleDelete}
-                            handleEdit={handleEdit}
                         />
                     </div>
                 ))}
