@@ -40,7 +40,7 @@ export default function CommentList({ post }) {
         console.groupEnd();
     };
 
-    // FIXME:댓글삭제
+    // 댓글삭제
     const handleDelete = async (commentId) => {
         const apiUrl = `/api/posts/${post.id}/comments/${commentId}`;
         console.group('handleDelete');
