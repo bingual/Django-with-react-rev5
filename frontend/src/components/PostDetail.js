@@ -65,9 +65,6 @@ export default function PostDetail() {
         }
     };
 
-    //FIXME: 미구현
-    const handleEdit = async (postId) => {};
-
     if (typeof post !== 'undefined') {
         const {
             id,
@@ -149,18 +146,6 @@ export default function PostDetail() {
                         />
                         <CommentList post={post} />
 
-                        {/* FIXME: 미구현 */}
-                        {requestUser === username && (
-                            <Button
-                                style={{
-                                    marginTop: '0.5em',
-                                    marginRight: '0.5em',
-                                }}
-                                onClick={() => handleEdit(id)}
-                            >
-                                수정
-                            </Button>
-                        )}
                         {requestUser === username && (
                             <Popconfirm
                                 title="정말 삭제하겠습니까?"
