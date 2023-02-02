@@ -38,7 +38,5 @@
   </div>
   
   <div>
-    <h3><a href="https://educastdj.azurewebsites.net/api/posts/">Azure Backend 배포 링크</a><h2>
-    <h3><a href="https://educastbingaulreact.z12.web.core.windows.net/">Azure Frontend 배포 링크</a><h2>
   </div>
 </div>
