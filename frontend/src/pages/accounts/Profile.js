@@ -1,5 +1,14 @@
 import React, { useEffect } from 'react';
-import { Form, Input, Button, Card, Upload, notification, Radio } from 'antd';
+import {
+    Form,
+    Input,
+    Button,
+    Card,
+    Upload,
+    notification,
+    Radio,
+    Modal,
+} from 'antd';
 import { useAppContext } from 'store';
 import { PlusOutlined, SmileOutlined, FrownOutlined } from '@ant-design/icons';
 import { axiosInstance, useAxios } from 'api';
@@ -299,6 +308,18 @@ export default function Profile() {
                         </Button>
                         <Link to={'/ChangePassword'}>ChangePassword</Link>
                     </Form.Item>
+
+                    <Modal
+                        open={previewPhoto.visible} // 이미지 팝업창 여부
+                        footer={null} // 하단에 불필요한 버튼을 없앰
+                        onCancel={() => setPreviewPhoto({ visible: false })}
+                    >
+                        <img
+                            src={previewPhoto.base64}
+                            style={{ width: '100%' }}
+                            alt="Preview"
+                        />
+                    </Modal>
                 </Form>
             </Card>
         </div>
