@@ -4,8 +4,9 @@ from django.contrib.auth import get_user_model
 from django.db.models import Q
 from rest_framework import status
 from rest_framework.decorators import action, api_view
+from rest_framework.filters import SearchFilter
 from rest_framework.generics import get_object_or_404
-from rest_framework.generics import RetrieveUpdateAPIView
+from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -39,7 +40,6 @@ class PostViewSet(ModelViewSet):
             Q(author=self.request.user)
             | Q(author__in=self.request.user.following_set.all())
         )
-        # qs = qs.filter(created_at__gte=timesince)
         return qs
 
     # serializer의 값을 추가시키기 위해 사용
@@ -104,9 +104,13 @@ class UserPage(RetrieveUpdateAPIView):
         return Response(serializer.data)
 
 
-@api_view(['GET'])
-def userPostList(reqeust, username):
-    page_user = get_object_or_404(User, username=username, is_active=True)
-    post = Post.objects.filter(author=page_user)
-    seriailzer = PostSerializer(post, many=True)
-    return Response(seriailzer.data)
+# 유저페이지 포스팅 목록
+class UserPostList(ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        page_user = get_object_or_404(User, username=self.kwargs['username'], is_active=True)
+        qs = qs.filter(author=page_user)
+        return qs
